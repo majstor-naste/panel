@@ -1,185 +1,265 @@
-<?php
-include_once('./sys/functions.php');
-isLogged();
-$logged_user = getLoggedUser();
-$server_name = getServerProperty('server_name');
-$fast_packages = json_decode(getServerProperty('fast_packages'), true);
-$fixed_informations = getServerProperty('fixed_informations');
+<?php 
+date_default_timezone_set("America/Sao_Paulo");
+#######################CHECK ERROR ###################################
+
+ini_set('display_errors', 0);
+ini_set('display_startup_errors', 0);
+error_reporting(E_ALL); 
+include 'chk.php';
+######################################################################
+
+include ('includes/header.php');
+
 ?>
-<!DOCTYPE html>
-<html lang="pt_BR">
+                <div class="header1">
+						<center>
+						    <br>
+						     <img src="img/ibo1.png" alt="" height="100">
+						    <br><br><br> 
+													<a><p>
+  <span>
 
-<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	
+    𝑫𝒂𝒔𝒉𝒃𝒐𝒂𝒓𝒅
+  </span>
 
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta http-equiv="x-ua-compatible" content="ie=edge">
-	<title><?php echo $server_name; ?></title>
-	<!-- Font Awesome Icons -->
-	<link rel="stylesheet" href="plugins2/fontawesome-free/css/all.min.css">
-	<!-- overlayScrollbars -->
-	<link rel="stylesheet" href="plugins2/overlayScrollbars/css/OverlayScrollbars.min.css">
-	<!-- Theme style -->
-	<link rel="stylesheet" href="dist2/css/adminlte.min.css">
-	<!-- SweetAlert2 -->
-	<link rel="stylesheet" href="plugins2/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
-	<!-- Google Font: Source Sans Pro -->
-	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
-</head>
+</p></a>
+						</center>
 
-<body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed text-sm">
-	<div class="wrapper">
-		<?php include_once('sidebar.php'); ?>
-		<div class="content-wrapper">
-			<div class="content-header">
-				<div class="container-fluid">
-					<div class="row mb-2">
-						<div class="col-sm-6">
-							<h1 class="m-0 text-dark">Dashboard</h1>
 						</div>
-						<div class="col-sm-6">
-							<ol class="breadcrumb float-sm-right">
-								<li class="breadcrumb-item"><a href="#">Home</a></li>
-								<li class="breadcrumb-item active">Dashboard</li>
-							</ol>
-						</div>
+
+
+
+
+ 
+
+<style>
+
+
+.header1 {
+    flex: 1 1 auto;
+    min-height: 1px;
+    padding: 1.25rem;
+    border: 1px solid #9c9c9c;
+    border-radius: 1.35rem;
+    background-color: #252b3b;
+    margin-left: 25px;
+    margin-right: 25px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.header3 {
+    padding: 1.25rem;
+    border: 1px solid #9c9c9c;
+    border-radius: 1.35rem;
+    background-color: #252b3b;
+}
+</style>
+
+
+<style>
+
+.row {
+    display: flex;
+    margin-right: -0.75rem;
+    margin-left: -0.75rem;
+}
+
+.dash {
+  padding: 5px;
+  background-color: tranparent;
+  transition: transform .2s;
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  color: white;
+  text-shadow: 2px 2px 4px #000000;
+  border: 4px solid transparent;
+  padding: 1px;
+  border-radius: 15px;
+}
+
+
+.dash:hover {
+  color: white;
+  text-shadow: 2px 2px 4px #000000;
+  padding: 5px;
+  background-image: linear-gradient(to top right, #1d2426, transparent);
+  transition: transform .2s;
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  
+  padding: 1px; 
+  border-radius: 15px;
+}
+.bg-primary {
+    background-color: #1d222e !important;
+    border: 1px solid #838594;
+}
+
+
+.fa-user-shield:before {
+    content: "\f505";
+    color: #718594;
+}
+
+p span {
+    font: 700 2.5em/1 "Oswald", sans-serif;
+    letter-spacing: 0;
+    padding: 0.25em 0 0.325em;
+    display: block;
+    text-shadow: 0 0 80px rgba(255, 255, 255, 0.5);
+    background: url(img/animated-text-fill.png) repeat-y;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -webkit-animation: aitf 80s linear infinite;
+    -webkit-transform: translate3d(0, 0, 0);
+    -webkit-backface-visibility: hidden;
+    margin-top: -50px;
+    margin-left: -60px;
+}
+
+
+
+
+/* Animate Background Image */
+@-webkit-keyframes aitf {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
+
+.bg-white {
+    background-color: #1d222e !important;
+}
+
+p {
+    text-transform: uppercase;
+    letter-spacing: 0.5em;
+    display: inline-block;
+    position: absolute;
+    top: auto;
+    margin-left: -55px;
+}
+</style>
+<?php 
+
+echo ' <!-- Begin Page Content -->' . "\n";
+echo '        <div class="container-fluid">' . "\n";
+echo "\n";
+
+
+
+echo '          <!-- Content Row -->' . "\n";
+echo '          <div class="row">' . "\n";
+echo "\n";
+echo '            <!-- First Column -->' . "\n";
+echo '            <div class="col-lg-12">' . "\n";
+echo "\n";
+echo '              <!-- Custom codes -->' . "\n";
+
+
+echo '                <div class="header3">' . "\n";
+
+?>
+<!-- [ Main Content ] start -->
+                <div class="row">
+			
+			<div class="col-lg-3 col-md-3 py-2" style="text-align: center;">
+				<a href="./users.php" style="text-decoration: none;">
+				<div class="dash card bg-primary  widget-block shadow py-2">
+					<div class="card-block">
+						<i class="fas fa-fw fa-user-plus" style="margin-top:7px;font-size:20px" aria-hidden="true"></i>
+						<br
+						<a>Usuarios</a>
+
 					</div>
 				</div>
-			</div>
-			<section class="content">
-				<div class="container-fluid">
-					<div class="row">
-						<div class="col-12 col-sm-6 col-md-3">
-							<div class="info-box">
-								<span class="info-box-icon bg-info elevation-1"><i class="fas fa-users"></i></span>
-								<div class="info-box-content">
-									<span class="info-box-text">Total de clientes</span>
-									<span class="info-box-number">
-										<?php echo number_format(getClientsCount($logged_user), 0, ',', ','); ?>
-									</span>
-								</div>
-							</div>
-						</div>
-						<div class="col-12 col-sm-6 col-md-3">
-							<div class="info-box mb-3">
-								<span class="info-box-icon bg-success elevation-1"><i class="fas fa-user-check"></i></span>
-								<div class="info-box-content">
-									<span class="info-box-text">Total de clientes ativos</span>
-									<span class="info-box-number"><?php echo number_format(getActiveCount($logged_user), 0, ',', ','); ?></span>
-								</div>
-							</div>
-						</div>
-						<div class="clearfix hidden-md-up"></div>
-						<div class="col-12 col-sm-6 col-md-3">
-							<div class="info-box mb-3">
-								<span class="info-box-icon bg-warning elevation-1"><i class="fas fa-user-clock"></i></span>
-								<div class="info-box-content">
-									<span class="info-box-text">Total de teste</span>
-									<span class="info-box-number"><?php echo number_format(getTrialClientsCount($logged_user), 0, ',', ','); ?></span>
-								</div>
-							</div>
-						</div>
-						<div class="col-12 col-sm-6 col-md-3">
-							<div class="info-box mb-3">
-								<span class="info-box-icon bg-secondary elevation-1"><i class="fas fa-user-plus"></i></span>
-								<div class="info-box-content">
-									<span class="info-box-text">Total de novos clientes</span>
-									<span class="info-box-number"><?php echo number_format(getNewClientsCount($logged_user), 0, ',', ','); ?></span>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="card card-default">
-						<div class="card-header">
-							<h3 class="card-title">Gerador de testes automático</h3>
-							<div class="card-tools">
-								<button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
-								<button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-remove"></i></button>
-							</div>
-						</div>
-						<div class="card-body" style="display: block;">
-							<div class="input-group">
-								<div class="input-group-prepend">
-									<span class="input-group-text">
-										<i class="fas fa-link"></i>
-									</span>
-								</div>
-								<input type="text" class="form-control" readonly="" id="testurl" value="<?php echo getTestUrl($logged_user['id']); ?>">
-								<div class="input-group-append">
-									<button type="button" class="btn btn-info copytesturl" data-clipboard-target="#testurl">Copiar</button>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="card card-default">
-						<div class="card-header">
-							<h3 class="card-title">Informações</h3>
-							<div class="card-tools">
-								<button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
-								<button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-remove"></i></button>
-							</div>
-						</div>
-						<div class="card-body" style="display: block;">
-							<div class="col-12 col-sm-12">
-								<div class="html-content">
-									<?php echo $fixed_informations; ?>
-								</div>
-							</div>
-						</div>
+				</a>
+			</div>	
+			
+			<div class="col-lg-3 col-md-3 py-2" style="text-align: center;">
+				<a href="./portals.php" style="text-decoration: none;">
+				<div class="dash card bg-primary  widget-block shadow py-2">
+					<div class="card-block">
+						<i class="fas fa-fw fa fa-server" style="margin-top:7px;font-size:20px" aria-hidden="true"></i>
+						<br
+						<a>Servidores</a>
+
 					</div>
 				</div>
-			</section>
-		</div>
-		<!-- Control Sidebar -->
-		<aside class="control-sidebar control-sidebar-dark"></aside>
-		<!-- /.control-sidebar -->
-		<!-- Main Footer -->
-		<?php include_once('footer.php'); ?>
-	</div>
-	<!-- REQUIRED SCRIPTS -->
-	<!-- jQuery -->
-	<script src="plugins2/jquery/jquery.min.js"></script>
-	<!-- Bootstrap -->
-	<script src="plugins2/bootstrap/js/bootstrap.bundle.min.js"></script>
-	<!-- overlayScrollbars -->
-	<script src="plugins2/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
-	<!-- AdminLTE App -->
-	<script src="dist2/js/adminlte.js"></script>
-	<!-- Clipboard -->
-	<script src="bower_components/clipboard.min.js"></script>
-	<!-- OPTIONAL SCRIPTS -->
-	<script src="dist2/js/demo.js"></script>
-	<!-- SweetAlert2 -->
-	<script src="plugins2/sweetalert2/sweetalert2.min.js"></script>
-	<!-- PAGE PLUGINS -->
-	<!-- jQuery Mapael -->
-	<script src="plugins2/jquery-mousewheel/jquery.mousewheel.js"></script>
-	<script src="plugins2/raphael/raphael.min.js"></script>
-	<script src="plugins2/jquery-mapael/jquery.mapael.min.js"></script>
-	<script src="plugins2/jquery-mapael/maps/usa_states.min.js"></script>
-	<!-- ChartJS -->
-	<!--script src="plugins2/chart.js/Chart.min.js"></script-->
-	<!-- PAGE SCRIPTS -->
-	
-	<script type="text/javascript">
-		$(function() {
-			new ClipboardJS('.copytesturl');
-			const Toast = Swal.mixin({
-				toast: true,
-				position: 'top-end',
-				showConfirmButton: false,
-				timer: 3000
-			});
+				</a>
+			</div>	
+			
+			<div class="col-lg-3 col-md-3 py-2" style="text-align: center;">
+				<a href="./note.php" style="text-decoration: none;">
+				<div class="dash card bg-primary  widget-block shadow py-2">
+					<div class="card-block">
+						<i class="fas fa-fw fa fa-newspaper" style="margin-top:7px;font-size:20px" aria-hidden="true"></i>
+						<br
+						<a>Notificações</a>
 
-			$('.copytesturl').click(function() {
-				Toast.fire({
-					type: 'success',
-					title: 'Link de teste automático copiado!'
-				})
-			});
-		});
-	</script>
-	<!--script src="dist2/js/pages/dashboard2.js"></script-->
+					</div>
+				</div>
+				</a>
+			</div>			
+			
+			
+		
+			
+			
+			<div class="col-lg-3 col-md-3 py-2" style="text-align: center;">
+				<a href="./snoop.php" style="text-decoration: none;">
+				<div class="dash card bg-primary  widget-block shadow py-2">
+					<div class="card-block">
+						<i class="fas fa-fw fa-eye" style="margin-top:7px;font-size:20px" aria-hidden="true"></i>
+						<br
+						<a>Conectado</a>
+
+					</div>
+				</div>
+				</a>
+			</div>	
+						
+			<div class="col-lg-3 col-md-3 py-2" style="text-align: center;">
+				<a href="./profile.php" style="text-decoration: none;">
+				<div class="dash card bg-primary  widget-block shadow py-2">
+					<div class="card-block">
+						<i class="fas fa-fw fa-user" style="margin-top:7px;font-size:20px" aria-hidden="true"></i>
+						<br
+						<a>ADM</a>
+
+					</div>
+				</div>
+				</a>
+			</div>	
+			
+			<div class="col-lg-3 col-md-3 py-2" style="text-align: center;">
+				<a href="dns.com" style="text-decoration: none;">
+				<div class="dash card bg-primary  widget-block shadow py-2">
+					<div class="card-block">
+						<i class="fas fa-fw fa fa-dot-circle-o" style="margin-top:7px;font-size:20px" aria-hidden="true"></i>
+						<br
+						<a>BRASIL PROJETOS</a>
+
+					</div>
+				</div>
+				</a>
+			</div>	
+			
+			
+      </div>
+
+                   
+                    <!-- Column -->
+
+<?php 
+
+
+?>
+
 </body>
-
-</html>

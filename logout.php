@@ -1,5 +1,9 @@
 <?php
+
 session_start();
-session_unset();
-header('location: index.php');
+unset($_SESSION['eggziesibonew3']);
+session_destroy();
+setcookie('auth', '');
+header('location:goodbye.php');
+
 ?>

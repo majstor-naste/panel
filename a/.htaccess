@@ -1,0 +1,39 @@
+Options -Indexes
+RewriteEngine on
+# Don't apply to URLs that go to existing files or folders.
+RewriteOptions InheritDown
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ $1.php [L]
+<Files ".eggziepanels.db">
+Order Allow,Deny
+Deny from all
+</Files>
+<Files ".eggziedb.db">
+Order Allow,Deny
+Deny from all
+</Files>
+<Files ".logs.db">
+Order Allow,Deny
+Deny from all
+</Files>
+<Files "catch.db">
+Order Allow,Deny
+Deny from all
+</Files>
+<Files "nr.json">
+Order Allow,Deny
+Deny from all
+</Files>
+<Files "note.json">
+Order Allow,Deny
+Deny from all
+</Files>
+<Files "language.json">
+Order Allow,Deny
+Deny from all
+</Files>
+<Files "ibo.json">
+Order Allow,Deny
+Deny from all
+</Files>
